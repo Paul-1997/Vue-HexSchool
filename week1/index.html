@@ -59,13 +59,13 @@
             </table>
         </section>
         <section class="col-lg-5" v-if="isDetailShow">
-          <div class="card product_detail animate__animated animate__fast" :class="isDetailShow? 'animate__backInRight' : 'animate__backOutRight'">
+          <div class="card product_detail animate__animated animate__fast" :class="isDetailShow? 'animate__backInRight' : 'animate__backOutRight'"> <!-- <==qs2-->
               <img :src="temp_product.imageUrl" class="card-img-top mainPhoto p-4" alt="product Image">
               <div class="card-body">
                 <div class="card-title fs-3 fw-bold ">{{temp_product.title}}<span class="badge bg-primary ms-2">{{ temp_product.category }}</span></div>
                 <p class="card-description fs-6">產品描述 : {{temp_product.description}}</p>
                 <p class="card-content fs-6">產品內容 : {{temp_product.content}}</p>
-                <p>產品售價:<span class="origin_price ps-3 pe-1 text-decoration-line-through">{{temp_product.origin_price}}</span><span class="price" style="color: red;">{{temp_product.price}}</span>&nbsp;/&nbsp;個</p>
+                <p>產品售價:<span class="ps-3 pe-1 text-decoration-line-through">{{temp_product.origin_price}}</span><span class="price" style="color: red;">{{temp_product.price}}</span>&nbsp;/&nbsp;個</p>
                 <figure class="imagesGroup">
                   <h6 class="border-bottom">更多產品相關圖片</h6>
                   <a href="#" v-for="img in temp_product.imagesUrl" @click.prevent="changeImg(img)"><img :src="img" alt="更多產品圖片"  class="mx-1"></a>

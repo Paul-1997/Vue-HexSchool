@@ -91,7 +91,5 @@ const app = {
     },
 }
 
+// createApp(app).mount("#app"); <== qs1
 Vue.createApp(app).mount("#app");
-
-
-// console.log(123456)
