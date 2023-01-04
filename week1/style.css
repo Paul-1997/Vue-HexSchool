@@ -1,0 +1,71 @@
+*, *::after, *::before {
+  padding: 0;
+  margin: 0;
+  scroll-behavior: smooth;
+  vertical-align: baseline;
+}
+
+body {
+  background: #eee;
+  height: 100vh;
+  font-size: 20px;
+}
+
+.header {
+  border-bottom: 1px solid #000;
+}
+
+th, td {
+  font-weight: 600;
+}
+
+thead tr th {
+  text-align: center;
+  min-width: 120px;
+}
+
+.product_li td {
+  margin: 10px;
+  text-align: center;
+}
+
+.isEnabled {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: green;
+}
+.isEnabled:is(.disable) {
+  color: red;
+}
+
+img {
+  -o-object-fit: contain;
+     object-fit: contain;
+  max-width: 100%;
+}
+
+.mainPhoto {
+  height: 300px;
+}
+
+.origin_price {
+  text-decoration: line-through;
+}
+
+.price {
+  color: red;
+}
+
+.imagesGroup img {
+  height: 150px;
+}
+
+.product_detail {
+  position: relative;
+}
+
+.removeBtn {
+  right: 0.5rem;
+  top: 0.5px;
+  position: absolute;
+}/*# sourceMappingURL=style.css.map */
