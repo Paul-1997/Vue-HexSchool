@@ -24,7 +24,8 @@
       integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8"
       crossorigin="anonymous"
     ></script>
-
+    <!-- customer style -->
+    <link rel="stylesheet" href="./style.css">
     
   </head>
   <body>
@@ -46,7 +47,7 @@
                 </tr>
               </thead>
               <tbody>
-                <template v-for="product in products">
+                <template v-for="product in products" :key="product.id">
                     <tr class="product_li" >
                         <td>{{ product.title }}</td>
                         <td>{{ product.origin_price }}</td>
@@ -58,8 +59,13 @@
               </tbody>
             </table>
         </section>
-        <section class="col-lg-5" v-if="isDetailShow">
-          <div class="card product_detail animate__animated animate__fast" :class="isDetailShow? 'animate__backInRight' : 'animate__backOutRight'"> <!-- <==qs2-->
+        <Transition name="card_animate"
+                    enter-active-class="animate__backInRight"
+                    leave-active-class="animate__backOutRight"
+                    :duration="{ enter: 2000, leave: 200 }"
+                    >
+        <section class="col-lg-5 animate__animated animate__fast" v-show="isDetailShow">
+          <div class="card product_detail">
               <img :src="temp_product.imageUrl" class="card-img-top mainPhoto p-4" alt="product Image">
               <div class="card-body">
                 <div class="card-title fs-3 fw-bold ">{{temp_product.title}}<span class="badge bg-primary ms-2">{{ temp_product.category }}</span></div>
@@ -68,17 +74,18 @@
                 <p>產品售價:<span class="ps-3 pe-1 text-decoration-line-through">{{temp_product.origin_price}}</span><span class="price" style="color: red;">{{temp_product.price}}</span>&nbsp;/&nbsp;個</p>
                 <figure class="imagesGroup">
                   <h6 class="border-bottom">更多產品相關圖片</h6>
-                  <a href="#" v-for="img in temp_product.imagesUrl" @click.prevent="changeImg(img)"><img :src="img" alt="更多產品圖片"  class="mx-1"></a>
+                  <a href="#" v-for="img in temp_product.imagesUrl" @click.prevent="changeImg(img)" :key="img"><img :src="img" alt="更多產品圖片"  class="mx-1"></a>
                 </figure>
               </div>
               <a href="#" class="bi bi-x-circle fs-3 removeBtn" @click.prevent="removeCard()"></a>
             </div>
         </section>
+      </Transition>
         </div>
       </div>
     </main>
 
-    <link rel="stylesheet" href="./style.css">
+    
     <script src="./all.js" type="module"></script>
   </body>
 </html>

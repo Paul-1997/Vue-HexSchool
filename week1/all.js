@@ -1,4 +1,5 @@
-import { createApp } from "https://cdnjs.cloudflare.com/ajax/libs/vue/3.2.45/vue.runtime.esm-browser.prod.min.js"
+// import { createApp } from "https://cdnjs.cloudflare.com/ajax/libs/vue/3.2.45/vue.runtime.esm-browser.prod.min.js" 
+import { createApp } from 'https://unpkg.com/vue@3/dist/vue.esm-browser.js'
 
 // 產品資料格式
 
@@ -59,7 +60,7 @@ const products = [
 const app = {
     data(){
         return {
-            products,
+            products: "",
             temp_product:{},
         }
     },
@@ -89,7 +90,11 @@ const app = {
         return this.temp_product.id ? true : false
       }
     },
+
+    mounted(){
+      this.products = products;
+    }
 }
 
-// createApp(app).mount("#app"); <== qs1
-Vue.createApp(app).mount("#app");
+createApp(app).mount("#app");
+// Vue.createApp(app).mount("#app");
