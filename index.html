@@ -11,17 +11,45 @@
 
     
 <body>
-    <header class="my-3 text-center">
+    <header class="header text-center d-flex justify-content-center">
         <h1>六角Vue每週任務</h1>
     </header>
     <main class="container">
         <div class="row p-3">
             <div class="list-group">
                 <a class="list-group-item list-group-item-action" href="./week1/">第一週：關注點分離</a>
-                <a class="list-group-item list-group-item-action disabled" href="./week2/login.html">第二周：RESTful API串接</a>
-                <a class="list-group-item list-group-item-action disabled" href="./week3/">第三周：熟練Vue.js(施工中)</a>
+                <a class="list-group-item list-group-item-action" href="./week2/login.html">第二周：RESTful API串接</a>
+                <a class="list-group-item list-group-item-action" href="./week3/login.html">第三周：熟練Vue.js(施工中)</a>
             </div>
         </div>
     </main>
+    <footer class="footer d-flex ">
+        <p class="text-center fs-4 w-100 p-3">僅作為六角學院前端作品使用,不做商業用途</p>
+    </footer>
+    <style>
+        body{
+            display: grid;
+        }
+        .header{
+            min-height: 20vh;
+            min-height: 20dvh;
+            padding-top: 5dvh;
+            padding-top: 5dvh; 
+            /* dvh => dynamic vh  , svh=>for mobile lvh=> large screen */
+
+            background:radial-gradient(hsl(120,86%,56%) 10%,hsl(120,80%,69%))
+            
+        }
+        main{
+            min-height: calc(864px - 30vh);
+        }
+        .footer{
+            min-height: 10vh;
+            background: #7980FF;
+        }
+        .footer p {
+            color:#eee
+        }
+    </style>
 </body>
 </html>

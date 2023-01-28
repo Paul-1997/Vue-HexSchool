@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Week3-Vue-HomeWork</title>
+    <script src="https://unpkg.com/vue@next"></script>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0"
+      crossorigin="anonymous"
+    />
+
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    /><!-- animate.css -->
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8"
+      crossorigin="anonymous"
+    ></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.2.2/axios.min.js"></script>
+    <!-- customer style -->
+    <link rel="stylesheet" href="./style/products.css">
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    
+
+    
+  </head>
+  <body>
+    <header class="header d-flex flex-column">
+      <p class="userGreeting  d-flex justify-content-end me-5 pt-2 w-100"><span class="userName me-3 fw-bold">使用者,</span>你好!</p>
+      <h1 class="justify-content-center text-center w-100">第三週主線任務一後台管理</h1>
+      <div class="d-flex w-100 justify-content-end px-3"><button type="button" class="btn logOut" @click="logOut">我要登出</button></div>
+    </header>
+    <main id="app">
+      <div class="container main">
+        <div class="row py-3">
+          <section :class="isDetailShow ? 'col-lg-7 col-md-12': 'col-lg-12 col-md-12' ">
+            <h2 class="fw-bold text-center">產品列表</h2>
+            <div class="nav">
+              <ul class="nav-list d-flex ps-5">
+                <li class="py-1 px-3 me-1 active">全部</li>
+                <li class="py-1 px-3 me-1">蛋糕</li>
+                <li class="py-1 px-3 me-1">貝果</li>
+                <li class="py-1 px-3 me-1">餅乾</li>
+                <li class="py-1 px-3 ">布丁</li>
+              </ul>
+              <div class="addButton"><button type="button" class="btn btn-primary">新增產品</button></div>
+            </div>
+            <div class="table_box p-3">
+              <table class="table table-responsive table-bordered border-secondary rounded">
+                <thead>
+                  <tr>
+                    <th>產品名稱</th>
+                    <th>原價</th>
+                    <th>售價</th>
+                    <th>是否啟用</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <template v-for="product in products" :key="product.id">
+                      <tr class="product_li" >
+                          <td>{{ product.title }}</td>
+                          <td>{{ product.origin_price }}</td>
+                          <td>{{ product.price }}</td>
+                          <td :class="isEnabled(product.is_enabled)">{{ product.is_enabled===1 ? "啟用":"未啟用"}}</td>
+                          <td><button type="button" class="btn btn-primary" :class="{'btn-success':product.id === temp_product.id}" :disabled="product.id === temp_product.id" @click="temp_product=product">{{product.id !== temp_product.id ? "點我觀看更多" : "Check!" }}</button></td>
+                      </tr>
+                  </template>
+                </tbody>
+              </table>
+            </div>
+        </section>
+        <Transition name="card_animate"
+                    enter-active-class="animate__backInRight"
+                    leave-active-class="animate__backOutRight"
+                    :duration="{ enter: 2000, leave: 200 }"
+                    >
+        <section class="col-lg-5 animate__animated animate__fast" v-show="isDetailShow">
+          <div class="card product_detail">
+              <img :src="temp_product.imageUrl" class="card-img-top mainPhoto p-4" alt="product Image">
+              <div class="card-body">
+                <div class="card-title fs-3 fw-bold ">{{temp_product.title}}<span class="badge bg-primary ms-2">{{ temp_product.category }}</span></div>
+                <p class="card-description fs-6">產品描述 : {{temp_product.description}}</p>
+                <p class="card-content fs-6">產品內容 : {{temp_product.content}}</p>
+                <p>產品售價:<span class="ps-3 pe-1 text-decoration-line-through">{{temp_product.origin_price}}</span><span class="price" style="color: red;">{{temp_product.price}}</span>&nbsp;/&nbsp;個</p>
+                <figure class="imagesGroup">
+                  <h6 class="border-bottom">更多產品相關圖片</h6>
+                  <a href="#" v-for="img in temp_product.imagesUrl" @click.prevent="changeImg(img)" :key="img"><img :src="img" alt="更多產品圖片"  class="mx-1"></a>
+                </figure>
+              </div>
+              <a href="#" class="bi bi-x-circle fs-3 removeBtn" @click.prevent="removeCard()"></a>
+            </div>
+        </section>
+      </Transition>
+        </div>
+      </div>
+    </main>
+
+    
+    <script src="./js/product.js" type="module"></script>
+  </body>
+</html>
