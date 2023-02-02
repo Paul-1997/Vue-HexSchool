@@ -24,7 +24,7 @@
         </div>
     </main>
     <footer class="footer d-flex ">
-        <p class="text-center fs-4 w-100 p-3">僅作為六角學院前端作品使用,不做商業用途</p>
+        <p class="text-center fs-4 w-100 p-3">僅作為六角學院前端作品使用</p>
     </footer>
     <style>
         body{
@@ -36,19 +36,22 @@
             padding-top: 5dvh;
             padding-top: 5dvh; 
             /* dvh => dynamic vh  , svh=>for mobile lvh=> large screen */
-
-            background:radial-gradient(hsl(120,86%,56%) 10%,hsl(120,80%,69%))
+            /* https://cssgradient.io/ cusotmize gradient*/
+            background:radial-gradient(circle, rgba(137,255,103,1) 34%, rgba(185,255,136,1) 75%);
+            box-shadow: 0 5px 10px -7px #000;
             
         }
         main{
-            min-height: calc(864px - 30vh);
+            min-height: calc(864px - 10vh);
         }
         .footer{
             min-height: 10vh;
-            background: #7980FF;
+            background: #a9ccFF;
+            padding-block: 1rem;
         }
-        .footer p {
-            color:#eee
+        a:is(.list-group-item){
+            font-size: 1.5rem;
+            padding: 1rem;
         }
     </style>
 </body>

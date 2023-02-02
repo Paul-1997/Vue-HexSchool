@@ -4,38 +4,41 @@
   scroll-behavior: smooth;
   vertical-align: baseline;
 }
-:root{ /*week3*/
+:root{
   --header-bg-color : #FFB67D;
   --main-bg-color :  #FCFCED;
+  --table-border-color: #888;
 }
 body {
-  height: 100vh;
+  min-height: 100vh;
   font-size: 20px;
-  background: #fafafa;
 }
-
-.header {
-  min-height: 20dvh;
-  align-items: center;
-  background-color: var(--header-bg-color);
+img {
+  -o-object-fit: contain;
+     object-fit: contain;
+  max-width: 100%;
+}
+li{
+  list-style: none;
 }
 .main{
   background: var(--main-bg-color);
   min-height: 100dvh;
 }
+/* table */
 th, td {
   font-weight: 600;
 }
-
+.product_li td {
+  margin: 10px;
+  text-align: center;
+}
 thead tr th {
   text-align: center;
   min-width: 120px;
 }
 
-.product_li td {
-  margin: 10px;
-  text-align: center;
-}
+
 
 .isEnabled {
   font-size: 1.25rem;
@@ -46,11 +49,7 @@ thead tr th {
   color: red;
 }
 
-img {
-  -o-object-fit: contain;
-     object-fit: contain;
-  max-width: 100%;
-}
+
 
 .mainPhoto {
   height: 300px;
@@ -76,15 +75,26 @@ img {
 
 
 /* week3 */
-li{
-  list-style: none;
+
+.header {
+  min-height: 20vh;
+  min-height: 20dvh;
+  align-items: center;
+  background: linear-gradient(45deg, rgba(254,200,119,1) 45%, rgba(255,170,103,1) 80%);
+  position: relative;
 }
+
 .logOut{
-  background: inherit;
+  background: transparent;
   color:#111;
+
+  position: absolute;
+  bottom: .25rem;
+  right: 1rem;
 }
-.logOut:hover{
-  color:red;
+.logOut .btn:hover{
+  transition: color .25s;
+  color:hsl(0, 100%, 40%);
   font-weight: 800;
 }
 
@@ -92,16 +102,24 @@ li{
   position: relative;
   min-height: 40px;
 }
+
 .nav-list{
   padding: 0;
   margin: 0;
 }
 .nav-list li{
+  padding: .25rem 1rem;
+
   cursor: pointer;
-  border-radius: 5px 5px 0 0;
-  border: 1px solid #000;
+  border-radius: 10px 10px 0 0;
+  border: 1px solid var(--table-border-color);
+  border-bottom-color: var(--table-border-color);
   background: #ECECE6;
   font-weight: 800;
+}
+
+.nav-list li:not(:last-child){
+  margin: 0 .25rem;
 }
 .nav-list li:is(.active){
   border-bottom: var(--main-bg-color);
@@ -114,10 +132,12 @@ li{
 }
 .table_box{
   min-height: 100vh;
-  outline: 1px solid  #bbb;
+  outline: 1px solid  var(--table-border-color);
 }
 .addButton{
   position: absolute;
   top: 0;
   right: 0;
 }
+
+/* week3 */
