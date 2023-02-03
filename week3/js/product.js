@@ -9,11 +9,46 @@ const path = 'vuepaul7426';
 //bootstraps model
 let productModal = {};
 let deleteProduct = {};
+
+
+
+
 const app = {
     data(){
         return {
+          datass: 
+          {
+            name:"阿八八八",
+            category:"蛋糕",
+            description: "好吃的蛋糕",
+            ingredients: "奶油、雞蛋、麵粉",
+            is_enabled: 1,
+            origin_price: "599",
+            price:"299",
+            title: "奶油蛋糕",
+            unit: "個",
+            imageUrl: "",
+            imagesUrl: [,,,,,],
+            id:"123456789"
+          },
             products: "",
             temp_product:{},
+
+            modal_product:
+            {
+              name:"",
+              category:"",
+              description: "",
+              ingredients: "",
+              is_enabled: 1,
+              origin_price: "",
+              price:"",
+              title: "",
+              unit: "",
+              imageUrl: "",
+              imagesUrl: [,,,,,],
+              id:"" //來判定是add還edit
+            }
         }
     },
     methods:{
@@ -68,14 +103,20 @@ const app = {
           })
         },
       //week3
+        openModal(type){
+          productModal.show();
+        },
         deleteProduct(id){
 
         },
         editProduct(id){
-          productModal.show();
+          this.openModal();
+          this.modal_product =  {...this.datass};
+          console.log(this.modal_product.id,this.datass.id);
         },
         addProduct(){
-          productModal.show();
+          this.openModal();
+          
         },
         logOut(){
 
@@ -99,7 +140,8 @@ const app = {
         //bootstrap Modal
         productModal = new bootstrap.Modal(document.querySelector('#productModal'));
         
-    }
+    },
+
 }
 
 createApp(app).mount("#app");
@@ -111,7 +153,7 @@ createApp(app).mount("#app");
 //     "category": "衣服3",
 //     "content": "這是內容",
 //     "description": "Sit down please 名設計師設計",\
-//     ingrdent:
+//     ingrdent: //成分
 //     "id": "-L9tH8jxVb2Ka_DYPwng",
 //     "is_enabled": 1,
 //     "num": 1,

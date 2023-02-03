@@ -6,7 +6,7 @@
 }
 :root{
   --header-bg-color : #FFB67D;
-  --main-bg-color :  #FCFCED;
+  --table-bg-color :  #FCFCED;
   --table-border-color: #888;
 }
 body {
@@ -22,7 +22,6 @@ li{
   list-style: none;
 }
 .main{
-  background: var(--main-bg-color);
   min-height: 100dvh;
 }
 /* table */
@@ -122,8 +121,8 @@ thead tr th {
   margin: 0 .25rem;
 }
 .nav-list li:is(.active){
-  border-bottom: var(--main-bg-color);
-  background: var(--main-bg-color);
+  border-bottom: var(--table-bg-color);
+  background: var(--table-bg-color);
   color: #B2AB44;
 }
 .nav-list li:not(.active):hover{
@@ -140,4 +139,8 @@ thead tr th {
   right: 0;
 }
 
+
+.table_box{
+  background: var(--table-bg-color);
+}
 /* week3 */
